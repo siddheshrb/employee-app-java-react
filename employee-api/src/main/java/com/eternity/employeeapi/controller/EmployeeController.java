@@ -36,9 +36,33 @@ public class EmployeeController {
     @GetMapping("/one/{id}")
     public ResponseEntity<Employee> getOneEmployee(@PathVariable Integer id) {
         Employee employee = service.getOneEmployee(id);
-        return new ResponseEntity<>(employee, HttpStatus.OK);
+        return new ResponseEntity<>(
+                employee,
+                HttpStatus.OK
+        );
     }
 
-    //Update
+    @DeleteMapping("/delete/{id}")
+    public ResponseEntity<String> deleteEmployee(@PathVariable Integer id) {
+        service.deleteEmployee(id);
+        return new ResponseEntity<String>(
+                "Employee '"+id+"' Deleted",
+                HttpStatus.OK
+        );
+    }
 
+    @PutMapping("/modify/{id}")
+    public ResponseEntity<String> updateEmployee(@PathVariable Integer id, @RequestBody Employee employee) {
+        Employee dbEmployee = service.getOneEmployee(id);
+        dbEmployee.setName(employee.getName());
+        dbEmployee.setSalary(employee.getSalary());
+        dbEmployee.setDepartment(employee.getDepartment());
+
+        service.saveEmployee(dbEmployee);
+
+        return new ResponseEntity<String>(
+                "Employee '"+id+"' Updated",
+                HttpStatus.OK
+        );
+    }
 }
