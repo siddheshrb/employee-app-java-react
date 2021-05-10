@@ -7,7 +7,8 @@ export class EmployeeListComponent extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            employees: []
+            employees: [],
+            message: null
         }
     }
     
@@ -19,7 +20,13 @@ export class EmployeeListComponent extends React.Component {
         //Make service call --> get data --> Set data to state(employees)
         EmployeeService.getAllEmployees().then((response)=>{
             this.setState({ employees:response.data });
-            console.log('Response: ' + this.state.employees[0].name);
+        });
+    }
+
+    deleteEmployee(id) {
+        EmployeeService.deleteEmployee(id).then(response=>{
+            this.setState({message:response.data});
+            this.getAllEmployees();
         });
     }
 
@@ -29,11 +36,12 @@ export class EmployeeListComponent extends React.Component {
                     <h2>EMPLOYEE LIST VIEW</h2>
                     <table className="table table-hover">
                         <thead>
-                            <tr>
+                            <tr className="bg-info text-white">
                                 <th>ID</th>
                                 <th>NAME</th>
                                 <th>SALARY</th>
                                 <th>DEPARTMENT</th>
+                                <th>OPERATION</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -44,6 +52,7 @@ export class EmployeeListComponent extends React.Component {
                                     <td>{emp.name}</td>
                                     <td>{emp.salary}</td>
                                     <td>{emp.department}</td>
+                                    <td><button className="btn btn-danger" onClick={()=> this.deleteEmployee(emp.id)}>DELETE</button></td>
                                 </tr>
                             )
                         }
