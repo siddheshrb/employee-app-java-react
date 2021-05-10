@@ -58,6 +58,13 @@ export class EmployeeListComponent extends React.Component {
                         }
                         </tbody>
                     </table>
+                    {
+                        this.state.message && (
+                            <div className="alert alert-success">
+                                {this.state.message}
+                            </div>
+                        )
+                    }
                 </div>
             )
         }
