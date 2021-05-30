@@ -6,6 +6,7 @@ export class EmployeeListComponent extends React.Component {
     
     constructor(props) {
         super(props)
+        
         this.state = {
             employees: [],
             message: null
