@@ -33,31 +33,33 @@ export class EmployeeListComponent extends React.Component {
     render() {
             return(
                 <div>
-                    <h2>EMPLOYEE LIST VIEW</h2>
-                    <table className="table table-hover">
-                        <thead>
-                            <tr className="bg-info text-white">
-                                <th>ID</th>
-                                <th>NAME</th>
-                                <th>SALARY</th>
-                                <th>DEPARTMENT</th>
-                                <th>OPERATION</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        {
-                            this.state.employees.map(emp=>
-                                <tr key={emp.id}>
-                                    <td>{emp.id}</td>
-                                    <td>{emp.name}</td>
-                                    <td>{emp.salary}</td>
-                                    <td>{emp.department}</td>
-                                    <td><button className="btn btn-danger" onClick={()=> this.deleteEmployee(emp.id)}>DELETE</button></td>
+                    <h2 className="text-center">EMPLOYEES LIST</h2>
+                    <div className="row">
+                        <table className="table table-hover">
+                            <thead>
+                                <tr className="bg-info text-white">
+                                    <th>ID</th>
+                                    <th>NAME</th>
+                                    <th>SALARY</th>
+                                    <th>DEPARTMENT</th>
+                                    <th>ACTIONS</th>
                                 </tr>
-                            )
-                        }
-                        </tbody>
-                    </table>
+                            </thead>
+                            <tbody>
+                            {
+                                this.state.employees.map(employee=>
+                                    <tr key={employee.id}>
+                                        <td>{employee.id}</td>
+                                        <td>{employee.name}</td>
+                                        <td>{employee.salary}</td>
+                                        <td>{employee.department}</td>
+                                        <td><button className="btn btn-danger" onClick={()=> this.deleteEmployee(employee.id)}>DELETE</button></td>
+                                    </tr>
+                                )
+                            }
+                            </tbody>
+                        </table>
+                    </div>
                     {
                         this.state.message && (
                             <div className="alert alert-success">
