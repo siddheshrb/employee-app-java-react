@@ -1,5 +1,6 @@
 package com.eternity.employeeapi.model;
 
+import com.eternity.employeeapi.enums.Department;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,6 +21,6 @@ public class Employee {
 
     private String name;
     private Double salary;
-    private String department;
+    private Department department;
 
 }
