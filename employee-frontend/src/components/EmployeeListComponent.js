@@ -11,6 +11,11 @@ export class EmployeeListComponent extends React.Component {
             employees: [],
             message: null
         }
+        this.addEmployee = this.addEmployee.bind(this);
+    }
+
+    addEmployee() {
+        this.props.history.push('/employee/add');
     }
     
     componentDidMount() {
@@ -35,6 +40,9 @@ export class EmployeeListComponent extends React.Component {
             return(
                 <div>
                     <h2 className="text-center">EMPLOYEES LIST</h2>
+                    <div className="row">
+                        <button className="btn btn-primary" onClick={this.addEmployee}>Add Employee</button>
+                    </div>
                     <div className="row">
                         <table className="table table-hover">
                             <thead>
