@@ -14,6 +14,11 @@ class EmployeeService {
         return axios.delete(`${URL}/delete/${id}`);
     }
 
+    //3. Create Employee
+    createEmployee(employee) {
+        return axios.post(URL + '/save', employee);
+    }
+
 }
 
 export default new EmployeeService();

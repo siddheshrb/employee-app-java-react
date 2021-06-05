@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import EmployeeService from "../services/EmployeeService";
 
 class CreateEmployeeComponent extends React.Component {
 
@@ -38,6 +39,12 @@ class CreateEmployeeComponent extends React.Component {
             department: this.state.department
         };
         console.log('employee => ' + JSON.stringify(employee));
+
+        EmployeeService.createEmployee(employee).then(
+            res => {
+                this.props.history.push('/employees');
+            }
+        )
     }
 
     cancel() {
@@ -50,7 +57,9 @@ class CreateEmployeeComponent extends React.Component {
                 <div className="container">
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
-                            <h3 className="text-center">Add Employee</h3>
+                            <div>
+                                <h3 className="card-header">Add Employee</h3>
+                            </div>
                             <div className="card-body">
                                 <form>
                                     <div className="form-group">

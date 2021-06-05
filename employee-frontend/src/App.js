@@ -6,12 +6,18 @@ import EmployeeListComponent from './components/EmployeeListComponent';
 import HeaderComponent from './components/HeaderComponent';
 import FooterComponent from './components/FooterComponent';
 import CreateEmployeeComponent from "./components/CreateEmployeeComponent";
+import SidebarComponent from "./components/SidebarComponent";
 
 function App() {
   return (
     <div>
         <Router>
             <HeaderComponent />
+                {/*<div className="row">*/}
+                {/*    <div className="col-xs-2">*/}
+                {/*        <SidebarComponent/>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
                 <div className="container">
                     <Switch>
                         <Route path = "/" exact component = {EmployeeListComponent}></Route>
