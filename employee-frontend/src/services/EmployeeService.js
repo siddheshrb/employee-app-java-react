@@ -25,8 +25,8 @@ class EmployeeService {
     }
 
     //5. Update Employee
-    updateEmployee(employee) {
-        return axios.post(URL + '/modify/' + employee.id);
+    updateEmployee(employee, id) {
+        return axios.put(URL + '/modify/' + id, employee);
     }
 
 }

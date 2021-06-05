@@ -51,9 +51,9 @@ class UpdateEmployeeComponent extends React.Component {
             department: this.state.department
         };
         console.log('employee => ' + JSON.stringify(employee));
-        //EmployeeService.updateEmployee(employee).then(response => {
-
-        //})
+        EmployeeService.updateEmployee(employee, this.state.id).then(response => {
+            this.props.history.push('/employees');
+        })
     }
 
     cancel() {
