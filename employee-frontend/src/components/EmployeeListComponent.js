@@ -29,6 +29,10 @@ export class EmployeeListComponent extends React.Component {
         });
     }
 
+    editEmployee(id) {
+        this.props.history.push(`/employee/update/${id}`);
+    }
+
     deleteEmployee(id) {
         EmployeeService.deleteEmployee(id).then(response=>{
             this.setState({message:response.data});
@@ -62,7 +66,10 @@ export class EmployeeListComponent extends React.Component {
                                         <td>{employee.name}</td>
                                         <td>{employee.salary}</td>
                                         <td>{employee.department}</td>
-                                        <td><button className="btn btn-danger" onClick={()=> this.deleteEmployee(employee.id)}>DELETE</button></td>
+                                        <td>
+                                            <button className="btn btn-primary" onClick={() => this.editEmployee(employee.id)}>UPDATE</button>
+                                            <button className="btn btn-danger" onClick={()=> this.deleteEmployee(employee.id)}>DELETE</button>
+                                        </td>
                                     </tr>
                                 )
                             }

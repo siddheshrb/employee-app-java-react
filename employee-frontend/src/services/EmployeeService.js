@@ -19,6 +19,16 @@ class EmployeeService {
         return axios.post(URL + '/save', employee);
     }
 
+    //4. Get Employee by Id
+    getEmployeeById(employeeId) {
+        return axios.get(URL + '/one/' + employeeId);
+    }
+
+    //5. Update Employee
+    updateEmployee(employee) {
+        return axios.post(URL + '/modify/' + employee.id);
+    }
+
 }
 
 export default new EmployeeService();
