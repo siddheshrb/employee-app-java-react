@@ -16,7 +16,7 @@ class CreateEmployeeComponent extends React.Component {
         this.changeNameHandler = this.changeNameHandler.bind(this);
         this.changeSalaryHandler = this.changeSalaryHandler.bind(this);
         this.changeDepartmentHandler = this.changeDepartmentHandler.bind(this);
-        this.saveEmployee = this.saveEmployee.bind(this);
+        this.saveOrUpdateEmployee = this.saveOrUpdateEmployee.bind(this);
     }
 
     componentDidMount() {
@@ -47,7 +47,7 @@ class CreateEmployeeComponent extends React.Component {
         this.setState({department: event.target.value});
     }
 
-    saveEmployee = (e) => {
+    saveOrUpdateEmployee = (e) => {
         e.preventDefault();
 
         let employee = {
@@ -112,7 +112,7 @@ class CreateEmployeeComponent extends React.Component {
                                                value={this.state.department} onChange={this.changeDepartmentHandler}/>
                                     </div>
                                     <div className="form-group">
-                                        <button className = "btn btn-success" onClick={this.saveEmployee}>Save</button>
+                                        <button className = "btn btn-success" onClick={this.saveOrUpdateEmployee}>Save</button>
                                         <button className = "btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
                                     </div>
                                 </form>
