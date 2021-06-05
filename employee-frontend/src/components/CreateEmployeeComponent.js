@@ -7,6 +7,7 @@ class CreateEmployeeComponent extends React.Component {
         super(props);
 
         this.state = {
+            id: this.props.match.params.id,
             name: '',
             salary: '',
             department: ''
@@ -16,6 +17,22 @@ class CreateEmployeeComponent extends React.Component {
         this.changeSalaryHandler = this.changeSalaryHandler.bind(this);
         this.changeDepartmentHandler = this.changeDepartmentHandler.bind(this);
         this.saveEmployee = this.saveEmployee.bind(this);
+    }
+
+    componentDidMount() {
+
+        if(this.state.id == -1) {
+            return
+        } else {
+            EmployeeService.getEmployeeById(this.state.id).then(response => {
+                let employee = response.data;
+                this.setState({
+                    name: employee.name,
+                    salary: employee.salary,
+                    department: employee.department
+                });
+            });
+        }
     }
 
     changeNameHandler = (event) => {
@@ -40,15 +57,30 @@ class CreateEmployeeComponent extends React.Component {
         };
         console.log('employee => ' + JSON.stringify(employee));
 
-        EmployeeService.createEmployee(employee).then(
-            res => {
-                this.props.history.push('/employees');
-            }
-        )
+        if(this.state.id == -1) {
+            EmployeeService.createEmployee(employee).then(
+                res => {
+                    this.props.history.push('/employees');
+                });
+        } else {
+            EmployeeService.updateEmployee(employee, this.state.id).then(
+                res => {
+                    this.props.history.push('/employees');
+                });
+        }
     }
 
     cancel() {
         this.props.history.push('/employees');
+    }
+
+    getTitle() {
+        console.log('EmployeeId: ' + this.state.id);
+        if(this.state.id == -1) {
+            return <h3 className="card-header">Add Employee</h3>
+        } else {
+            return <h3 className="card-header">Edit Employee</h3>
+        }
     }
 
     render() {
@@ -58,7 +90,9 @@ class CreateEmployeeComponent extends React.Component {
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
                             <div>
-                                <h3 className="card-header">Add Employee</h3>
+                                {
+                                    this.getTitle()
+                                }
                             </div>
                             <div className="card-body">
                                 <form>
