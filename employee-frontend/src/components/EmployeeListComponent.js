@@ -15,7 +15,7 @@ export class EmployeeListComponent extends React.Component {
     }
 
     addEmployee() {
-        this.props.history.push('/employee/add');
+        this.props.history.push('/employee/add/-1');
     }
     
     componentDidMount() {
@@ -30,7 +30,8 @@ export class EmployeeListComponent extends React.Component {
     }
 
     editEmployee(id) {
-        this.props.history.push(`/employee/update/${id}`);
+        console.log('EmployeeId : ' + id);
+        this.props.history.push(`/employee/add/${id}`);
     }
 
     deleteEmployee(id) {
