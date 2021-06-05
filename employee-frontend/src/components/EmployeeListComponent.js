@@ -38,12 +38,12 @@ export class EmployeeListComponent extends React.Component {
 
     render() {
             return(
-                <div>
-                    <h2 className="text-center">EMPLOYEES LIST</h2>
-                    <div className="row">
+                <div className="card">
+                    <h2 className="card-header" align="center">EMPLOYEES LIST</h2>
+                    <div className="card-body">
                         <button className="btn btn-primary" onClick={this.addEmployee}>Add Employee</button>
                     </div>
-                    <div className="row">
+                    <div className="card-body">
                         <table className="table table-hover">
                             <thead>
                                 <tr className="bg-info text-white">
