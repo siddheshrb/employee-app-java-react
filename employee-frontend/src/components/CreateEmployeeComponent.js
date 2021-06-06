@@ -86,7 +86,7 @@ class CreateEmployeeComponent extends React.Component {
     render() {
         return(
             <div>
-                <div className="container">
+                <div className="container" style={{marginTop: "20px"}}>
                     <div className="row">
                         <div className="card col-md-6 offset-md-3 offset-md-3">
                             <div>
@@ -112,8 +112,8 @@ class CreateEmployeeComponent extends React.Component {
                                                value={this.state.department} onChange={this.changeDepartmentHandler}/>
                                     </div>
                                     <div className="form-group">
-                                        <button className = "btn btn-success" onClick={this.saveOrUpdateEmployee}>Save</button>
-                                        <button className = "btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px"}}>Cancel</button>
+                                        <button className = "btn btn-success" onClick={this.saveOrUpdateEmployee} style={{marginTop: "20px"}}>Save</button>
+                                        <button className = "btn btn-danger" onClick={this.cancel.bind(this)} style={{marginLeft: "10px", marginTop: "20px"}}>Cancel</button>
                                     </div>
                                 </form>
                             </div>

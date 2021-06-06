@@ -41,9 +41,14 @@ export class EmployeeListComponent extends React.Component {
         });
     }
 
+    viewEmployee(id) {
+        console.log('EmployeeId : ' + id);
+        this.props.history.push(`/employee/view/${id}`)
+    }
+
     render() {
             return(
-                <div className="card">
+                <div className="card" style={{marginTop: "20px", width: "80%"}}>
                     <h2 className="card-header" align="center">EMPLOYEES LIST</h2>
                     <div className="card-body">
                         <button className="btn btn-primary" onClick={this.addEmployee}>Add Employee</button>
@@ -69,7 +74,8 @@ export class EmployeeListComponent extends React.Component {
                                         <td>{employee.department}</td>
                                         <td>
                                             <button className="btn btn-primary" onClick={() => this.editEmployee(employee.id)}>UPDATE</button>
-                                            <button className="btn btn-danger" onClick={()=> this.deleteEmployee(employee.id)}>DELETE</button>
+                                            <button className="btn btn-danger" style={{marginLeft: "10px"}} onClick={()=> this.deleteEmployee(employee.id)}>DELETE</button>
+                                            <button className="btn btn-success" style={{marginLeft: "10px"}} onClick={() => this.viewEmployee(employee.id)}>VIEW</button>
                                         </td>
                                     </tr>
                                 )
