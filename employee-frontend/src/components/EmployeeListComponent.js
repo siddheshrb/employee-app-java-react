@@ -48,7 +48,7 @@ export class EmployeeListComponent extends React.Component {
 
     render() {
             return(
-                <div className="card" style={{marginTop: "20px", width: "80%"}}>
+                <div className="card col-md-9 offset-md-1" style={{marginTop: "20px"}}>
                     <h2 className="card-header" align="center">EMPLOYEES LIST</h2>
                     <div className="card-body">
                         <button className="btn btn-primary" onClick={this.addEmployee}>Add Employee</button>
